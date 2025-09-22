@@ -32,6 +32,11 @@ function Mahasiswa (nama, energi) {
         this.energi -= laper;
         console.log(`laper ${this.nama}`)
     }
+
+    mahasiswa.tetap = function (tetap) {
+        this.energi == tetap;
+        console.log(`sama ${this.energi}`)
+    }
     return mahasiswa;
 }
 

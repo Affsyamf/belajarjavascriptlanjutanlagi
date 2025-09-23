@@ -18,39 +18,39 @@
 
 //2.  function declaration
 
-const methodMahasiswa = {
-    makan: function (porsi) {
-        this.energi += porsi;
-        console.log(`halo ${this.nama} selamat mkn`);
-    },
+// const methodMahasiswa = {
+//     makan: function (porsi) {
+//         this.energi += porsi;
+//         console.log(`halo ${this.nama} selamat mkn`);
+//     },
 
-    laper: function (min) {
-        this.energi -= min;
-        console.log(`laper ${this.nama}`);
-    },
+//     laper: function (min) {
+//         this.energi -= min;
+//         console.log(`laper ${this.nama}`);
+//     },
 
-    tetap: function (sama) {
-        this.energi == sama;
-        console.log(`sama ${this.energi}`);
-    },
+//     tetap: function (min) {
+//         this.energi == min;
+//         console.log(`sama ${this.energi}`);
+//     },
 
-    tidur: function (min) {
-        this.energi += min * 2;
-        console.log(`hallo ${this.nama} tidur kali 2`)
+//     tidur: function (min) {
+//         this.energi += min * 2;
+//         console.log(`hallo ${this.nama} tidur kali 2`)
 
-    }
-};
+//     }
+// };
 
-function Mahasiswa (nama, energi) {
-    let mahasiswa = Object.create(methodMahasiswa);
-    mahasiswa.energi = energi;
-    mahasiswa.nama = nama;
+// function Mahasiswa (nama, energi) {
+//     let mahasiswa = Object.create(methodMahasiswa);
+//     mahasiswa.energi = energi;
+//     mahasiswa.nama = nama;
 
-    return mahasiswa;
-}
+//     return mahasiswa;
+// }
 
-let afif = Mahasiswa ('Afif', 10);
-let misel = Mahasiswa ('misel', 10);
+// let afif = Mahasiswa ('Afif', 10);
+// let misel = Mahasiswa ('misel', 10);
 
 
 
@@ -77,3 +77,26 @@ let misel = Mahasiswa ('misel', 10);
 // }
 
 // let afif = new Mahasiswa('afif', 10);
+
+function Mahasiswa (nama, energi) {
+    // let mahasiswa = Object.create(methodMahasiswa);
+    this.nama = nama;
+    this.energi = energi;
+    this.energisekarang = this.energi;
+}
+
+Mahasiswa.prototype.makan = function (porsi) {
+    this.energi += porsi;
+    return `halo ${this.nama} selamat makan, sisa energi sekarang ${this.energi}`;
+}
+
+Mahasiswa.prototype.main = function (porsi) {
+    this.energi -= porsi;
+    return `energi berkurang ${porsi}, sisa energi: ${this.energi}`; 
+}
+
+Mahasiswa.prototype.tidur = function (porsi) {
+    this.energi += porsi * 2;
+    return `energi sekarang ${this.energisekarang} tidur energi di kali 2 sisa energi ${this.energi}`
+}
+let afif = new Mahasiswa('afif', 10);

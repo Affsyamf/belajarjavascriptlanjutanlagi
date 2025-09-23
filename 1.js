@@ -76,27 +76,62 @@
 //     }
 // }
 
-// let afif = new Mahasiswa('afif', 10);
+// let a1 = new Mahasiswa('afif', 10);
+// let a2 = new Mahasiswa ('misel', 10);
 
-function Mahasiswa (nama, energi) {
-    // let mahasiswa = Object.create(methodMahasiswa);
+// console.log(a1.makan === a2.makan);
+
+// function Mahasiswa (nama, energi) {
+//     // let mahasiswa = Object.create(methodMahasiswa);
+//     this.nama = nama;
+//     this.energi = energi;
+//     this.energisekarang = this.energi;
+// }
+
+// Mahasiswa.prototype.makan = function (porsi) {
+//     this.energi += porsi;
+//     return `halo ${this.nama} selamat makan, sisa energi sekarang ${this.energi}`;
+// }
+
+// Mahasiswa.prototype.main = function (porsi) {
+//     this.energi -= porsi;
+//     return `energi berkurang ${porsi}, sisa energi: ${this.energi}`; 
+// }
+
+// Mahasiswa.prototype.tidur = function (porsi) {
+//     this.energi += porsi * 2;
+//     return `energi sekarang ${this.energisekarang} tidur energi di kali 2 sisa energi ${this.energi}`
+// }
+// let afif = new Mahasiswa('afif', 10);
+// let misel = new Mahasiswa ('misel', 10);
+
+// console.log(afif.makan === misel.makan);
+
+
+
+//constractor function dalam versi class
+class Mahasiswa {
+  constructor (nama, energi) {
     this.nama = nama;
     this.energi = energi;
-    this.energisekarang = this.energi;
-}
+    }
 
-Mahasiswa.prototype.makan = function (porsi) {
+    makan (porsi) {
     this.energi += porsi;
     return `halo ${this.nama} selamat makan, sisa energi sekarang ${this.energi}`;
 }
 
-Mahasiswa.prototype.main = function (porsi) {
+main (porsi) {
     this.energi -= porsi;
     return `energi berkurang ${porsi}, sisa energi: ${this.energi}`; 
 }
 
-Mahasiswa.prototype.tidur = function (porsi) {
+tidur (porsi) {
+    const energisebelumtidur = this.energi;
     this.energi += porsi * 2;
-    return `energi sekarang ${this.energisekarang} tidur energi di kali 2 sisa energi ${this.energi}`
+    return `energi sekarang ${energisebelumtidur}, tidur selama ${porsi} di kali 2 menjadi ${porsi*2}, energi setelah tidur: ${this.energi}`
 }
+}
+
 let afif = new Mahasiswa('afif', 10);
+let misel = new Mahasiswa ('misel', 10);

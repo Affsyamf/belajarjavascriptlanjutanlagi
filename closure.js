@@ -30,13 +30,19 @@
 
 
 function panggilNama () {
+   
     if (true) {
     var nama = 'afif';
     let nama2 = 'doko';
-    console.log(nama2);
+    const nama3 = 'misel'
+    console.log(nama3);
+    
    }
+   var nama = 'diki';
+   let nama2 = 'dokon';
+   console.log(nama2);
    console.log(nama);
-
+   
 }
 
 panggilNama();

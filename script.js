@@ -37,18 +37,19 @@
 // tes
 
 function satu(){
-    var nama = 'afif';
+    let nama = 'afif';
     console.log(nama);
 }
 
-function dua() { // dua('kontol') dari line 53 melihat tidak ada yang menerima maka turun ke lokal
+function dua() { // dua('ddy') dari line 53 melihat tidak ada yang menerima maka turun ke lokal
     //lokal
+    // console.log();
     console.log(nama); //line 53 cek ke lokal karna tidak ada var/let/const yang ada hanya konsol nama
                         // dicari di lokal tidak ada nama, maka cari ke argumen (lokal parameter) tidak ada maka cari ke global
 }
 
 console.log(nama); //jika line 51 memakai let harus di tuker posisi inisialisasi
 var nama = 'misel';
-satu();
-dua('ddy');
+// satu();
+dua(satu());
 console.log(nama);

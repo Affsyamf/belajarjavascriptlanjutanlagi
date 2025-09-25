@@ -28,24 +28,45 @@
 // console.log(add());
 
 
+//tes const bisa berubah
+// const namaa = {nama: 'afif', umur: 21};
+// namaa.nama = 'dika';
 
-function panggilNama () {
-   
-    if (true) {
-    var nama = 'afif';
-    let nama2 = 'doko';
-    const nama3 = 'misel'
-    console.log(nama3);
-    
-   }
-   var nama = 'diki';
-   let nama2 = 'dokon';
-   console.log(nama2);
-   console.log(nama);
-   
+// console.log(namaa);
+
+// //tes const global scope
+// const nama = 'afif';
+// const umur = 21;
+
+// if (umur === 21) {
+//     const nama = 'dika';
+// }
+//  console.log(nama);
+// const umur = 21;
+
+// if(umur ===21) {
+//     const nama = 'dika';
+// }
+
+// console.log(nama);
+
+//tes var let
+function nama() {
+   var nama = 'doko';
+   var nama = 'dika';
+  if (true) {
+    let nama1 = 'afif';
+    nama1 = 'dilan';
+    const nama2 = 'misel';
+    console.log(nama2);
+    console.log(nama);
+    console.log(nama1);
+  }
+  console.log(nama);
+  
 }
+nama();
 
-panggilNama();
 // if (true) {
 //     var nama = 'afif'
 //     let nama2 = 'doko';

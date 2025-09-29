@@ -1,36 +1,83 @@
-$('.search-btn').on('click', function(){
-    $.ajax({
-    url: 'http://www.omdbapi.com/?apikey=540941ba&S=' + $('.input-keyword').val(),
-    success: results => {
-        const movies = results.Search;
+// $('.search-btn').on('click', function(){
+//     $.ajax({
+//     url: 'http://www.omdbapi.com/?apikey=540941ba&S=' + $('.input-keyword').val(),
+//     success: results => {
+//         const movies = results.Search;
+//         let cards = '';
+//         movies.forEach(m => {
+//             cards += showcards(m);
+//         });
+//         $('.movie-container').html(cards);
+
+
+
+//         //tombol di klik
+//         $('.detail-btn').on('click', function() {
+//             $.ajax({
+//                 url: 'http://www.omdbapi.com/?apikey=540941ba&i=' + $(this).data('imdbid'),
+//                 success: m => {
+//                     const movieDetail = showMovieDetail(m);
+
+//         $('.modal-body').html(movieDetail)
+//                 },
+//                 error: (e) => {
+//                     console.log(e.responseText)
+//                 }
+//             })
+//         });
+
+
+//     },
+//     error: (e) => {
+//         console.log(e.responseText)
+//     }
+// });
+// })
+
+
+
+
+//fetch
+const searchButton = document.querySelector('.search-btn')
+searchButton.addEventListener('click', function(){
+
+    const inputKeyword = document.querySelector('.input-keyword')
+    fetch('http://www.omdbapi.com/?apikey=540941ba&S=' + inputKeyword.value)
+     .then(response => response.json())
+     .then(response => {
+        const movies = response.Search;
         let cards = '';
-        movies.forEach(m => {
-            cards += showcards(m);
-        });
-        $('.movie-container').html(cards);
+        movies.forEach(m => cards += showcards(m))
+        const movieContainer = document.querySelector('.movie-container') 
+        movieContainer.innerHTML = cards;
 
-        //tombol di klik
-        $('.detail-btn').on('click', function() {
-            $.ajax({
-                url: 'http://www.omdbapi.com/?apikey=540941ba&i=' + $(this).data('imdbid'),
-                success: m => {
+        //ketika tombol detail klik
+        const detailButton = document.querySelectorAll('.detail-btn');
+        detailButton.forEach(btn => {
+            btn.addEventListener('click', function(){
+                const imdbid = this.dataset.imdbid;
+                fetch('http://www.omdbapi.com/?apikey=540941ba&i=' + imdbid) 
+                .then(response => response.json())
+                .then(m => {
                     const movieDetail = showMovieDetail(m);
-
-        $('.modal-body').html(movieDetail)
-                },
-                error: (e) => {
-                    console.log(e.responseText)
-                }
+                    const modalBody = document.querySelector('.modal-body');
+                    modalBody.innerHTML = movieDetail;
+                })
             })
-        });
+        })
 
+    })
 
-    },
-    error: (e) => {
-        console.log(e.responseText)
-    }
-});
 })
+
+
+
+
+
+
+
+
+
 
 
 

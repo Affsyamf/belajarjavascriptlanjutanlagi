@@ -75,7 +75,6 @@
 
 
 //menggunakan fetch refactor async await
-
 const searchButton = document.querySelector('.search-btn')
 searchButton.addEventListener('click', async function(){
     const inputKeyword = document.querySelector('.input-keyword')

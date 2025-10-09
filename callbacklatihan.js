@@ -77,11 +77,40 @@
 //menggunakan fetch refactor async await
 const searchButton = document.querySelector('.search-btn')
 searchButton.addEventListener('click', async function(){
+   try{
+
+   
     const inputKeyword = document.querySelector('.input-keyword')
    const movies = await getMovies(inputKeyword.value)
    updateUI(movies)
+   } catch(err) {
+    alert(err)
+   }
 })
 
+function getMovies(keyword) {
+    return fetch('http://www.omdbapi.com/?apikey=540941ba&S=' + keyword)
+     .then(response => {
+        if(!response.ok) {
+            throw new Error(response.statusText);
+        }
+        return response.json();
+     })
+     .then(response => {
+        if(response.Response === "False") {
+            throw new Error(response.Error);
+        }
+        return response.Search
+     })
+       
+}
+
+function updateUI (movies) {
+     let cards = '';
+     movies.forEach(m => cards += showcards(m))
+     const movieContainer = document.querySelector('.movie-container') 
+     movieContainer.innerHTML = cards;
+}
 
 //event binding
 document.addEventListener('click', async function(e){
@@ -104,19 +133,7 @@ function updateUIDetail (m) {
      modalBody.innerHTML = movieDetail;
 }
 
-function getMovies(keyword) {
-    return fetch('http://www.omdbapi.com/?apikey=540941ba&S=' + keyword)
-     .then(response => response.json())
-     .then(response => response.Search)
-       
-}
 
-function updateUI (movies) {
-     let cards = '';
-     movies.forEach(m => cards += showcards(m))
-     const movieContainer = document.querySelector('.movie-container') 
-     movieContainer.innerHTML = cards;
-}
 
 function showcards (m) {
     return `<div class="col-md-4 my-3">
